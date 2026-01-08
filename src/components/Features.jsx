@@ -76,7 +76,7 @@ const Features = () => {
                     Engineered to optimize every aspect of your retail journey.
                 </p>
 
-                <div className="features-grid">
+                <div className="features-grid responsive-grid-2">
                     {features.map((feature, index) => (
                         <FeatureCard
                             key={index}

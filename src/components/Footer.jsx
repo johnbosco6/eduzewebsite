@@ -1,14 +1,53 @@
 import React from 'react';
+import footerBg from '../assets/footer_bg.png';
 
 const Footer = () => {
     return (
         <footer style={{
-            background: 'var(--bg-secondary)',
-            paddingTop: '5rem',
-            paddingBottom: '2rem',
-            borderTop: '1px solid rgba(255,255,255,0.05)'
+            background: `url(${footerBg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            paddingTop: '0',
+            position: 'relative',
+            overflow: 'hidden'
         }}>
-            <div className="container">
+            {/* Overlay */}
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                background: 'rgba(0,0,0,0.8)',
+                zIndex: 0
+            }} />
+
+            {/* Animated SA Flag Gradient Strip */}
+            <div style={{
+                position: 'relative',
+                zIndex: 1,
+                height: '6px',
+                width: '100%',
+                background: `linear-gradient(
+                    90deg, 
+                    var(--sa-red), 
+                    var(--sa-white), 
+                    var(--sa-green), 
+                    var(--sa-yellow), 
+                    var(--sa-black), 
+                    var(--sa-blue), 
+                    var(--sa-red)
+                )`,
+                backgroundSize: '200% 100%',
+                animation: 'flagScroll 10s linear infinite'
+            }} />
+
+            <div className="container" style={{
+                paddingTop: '5rem',
+                paddingBottom: '2rem',
+                position: 'relative',
+                zIndex: 1
+            }}>
                 <div style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
@@ -29,9 +68,9 @@ const Footer = () => {
                     <div>
                         <h4 style={{ marginBottom: '1.2rem', fontSize: '1rem' }}>Company</h4>
                         <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: 'var(--text-secondary)', lineHeight: 2 }}>
-                            <li><a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>About Us</a></li>
+                            <li><a href="#features" style={{ textDecoration: 'none', color: 'inherit' }}>About Us</a></li>
                             <li><a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Careers</a></li>
-                            <li><a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Partners</a></li>
+                            <li><a href="#partners" style={{ textDecoration: 'none', color: 'inherit' }}>Partners</a></li>
                             <li><a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Press</a></li>
                         </ul>
                     </div>
@@ -39,7 +78,7 @@ const Footer = () => {
                     <div>
                         <h4 style={{ marginBottom: '1.2rem', fontSize: '1rem' }}>Support</h4>
                         <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: 'var(--text-secondary)', lineHeight: 2 }}>
-                            <li><a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Help Center</a></li>
+                            <li><a href="#faq" style={{ textDecoration: 'none', color: 'inherit' }}>Help Center</a></li>
                             <li><a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Safety</a></li>
                             <li><a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Community Guidelines</a></li>
                         </ul>
@@ -102,6 +141,15 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
+
+            <style>
+                {`
+                    @keyframes flagScroll {
+                        0% { background-position: 0% 50%; }
+                        100% { background-position: 100% 50%; }
+                    }
+                `}
+            </style>
         </footer>
     );
 };

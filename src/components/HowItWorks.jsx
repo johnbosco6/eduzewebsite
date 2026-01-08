@@ -41,7 +41,7 @@ const HowItWorks = () => {
                     </p>
                 </div>
 
-                <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+                <div className="responsive-grid-3">
                     <StepCard
                         number="01"
                         title="Download App"

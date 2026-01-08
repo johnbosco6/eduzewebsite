@@ -9,16 +9,15 @@ const Hero = () => {
             borderBottom: '1px solid rgba(255,255,255,0.05)',
             background: 'radial-gradient(circle at 80% 20%, rgba(0, 35, 149, 0.15) 0%, rgba(10, 10, 10, 1) 50%)'
         }}>
-            <div className="container" style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '4rem',
+            <div className="container responsive-grid-2" style={{
                 alignItems: 'center'
             }}>
                 {/* Left: Content */}
                 <div>
-                    <div style={{
-                        display: 'inline-block',
+                    <div className="hero-badge" style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        textAlign: 'center',
                         padding: '0.4rem 1rem',
                         background: 'rgba(252, 181, 20, 0.1)',
                         border: '1px solid var(--sa-yellow)',
@@ -28,7 +27,10 @@ const Hero = () => {
                         fontWeight: 600,
                         marginBottom: '1.5rem',
                         letterSpacing: '1px',
-                        textTransform: 'uppercase'
+                        textTransform: 'uppercase',
+                        maxWidth: '100%',
+                        whiteSpace: 'normal',
+                        lineHeight: '1.4'
                     }}>
                         South Africa's #1 Shopping Companion
                     </div>
@@ -56,7 +58,10 @@ const Hero = () => {
                         <a href="https://e-duzeapp.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-primary">
                             Download App
                         </a>
-                        <button className="btn-outline">
+                        <button
+                            className="btn-outline"
+                            onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
                             View Features
                         </button>
                     </div>
@@ -120,6 +125,18 @@ const Hero = () => {
 
                 </div>
             </div>
+            <style>
+                {`
+                    @media (max-width: 768px) {
+                        .responsive-grid-2 > div:first-child {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            text-align: center;
+                        }
+                    }
+                `}
+            </style>
         </section>
     );
 };
